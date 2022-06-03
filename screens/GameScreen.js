@@ -1,7 +1,7 @@
-import { } from "react-native";
+import { Text } from "react-native";
 
-function GameScreen(){
-
+function GameScreen() {
+  return <Text>GAME SCREEN</Text>;
 }
 
 export default GameScreen;
