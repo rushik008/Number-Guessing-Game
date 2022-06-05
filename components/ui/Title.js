@@ -3,7 +3,6 @@ import { Text, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 
 function Title({ children }) {
-  
   return <Text style={styles.title}>{children}</Text>;
 }
 
@@ -18,5 +17,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderWidth: 3,
     borderColor: Colors.primary800,
+    borderRadius: 10,
   },
 });

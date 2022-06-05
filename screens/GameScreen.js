@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet, Alert } from "react-native";
-import { useState } from "react";
+import { View, StyleSheet, Alert } from "react-native";
+import { useState, useEffect } from "react";
 
 import Title from "../components/ui/Title.js";
 import GuessedNumberContainer from "../components/Game/GuessedNumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton.js";
+import Card from "../components/ui/Card.js";
+import InstructionText from "../components/ui/InstructionText.js";
 
 function generateRandomNumber(min, max, exclude) {
   const randomNumber = Math.floor(Math.random() * (max - min) + min);
@@ -18,14 +20,15 @@ function generateRandomNumber(min, max, exclude) {
 let minBoundary = 1;
 let maxBoundary = 100;
 
-function GameScreen({ userNumberProp }) {
-  const initialGuess = generateRandomNumber(
-    minBoundary,
-    maxBoundary,
-    userNumberProp
-  );
-
+function GameScreen({ userNumberProp, onGameOverProp }) {
+  const initialGuess = generateRandomNumber(1, 100, userNumberProp);
   const [currentNumber, setCurrentNumber] = useState(initialGuess);
+
+  useEffect(() => {
+    if (currentNumber === userNumberProp) {
+      onGameOverProp();
+    }
+  }, [currentNumber, userNumberProp, onGameOverProp]);
 
   function nextGuessHandler(direction) {
     if (
@@ -57,29 +60,42 @@ function GameScreen({ userNumberProp }) {
 
       <GuessedNumberContainer>{currentNumber}</GuessedNumberContainer>
 
-      <View>
-        <Text>HIGHER OR LOWER ?</Text>
-        <View>
-          <PrimaryButton onPressProp={nextGuessHandler.bind(this, "lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPressProp={nextGuessHandler.bind(this, "greater")}>
-            +
-          </PrimaryButton>
+      <Card>
+        <InstructionText>HIGHER OR LOWER ?</InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.singleButtonStyle}>
+            <PrimaryButton onPressProp={nextGuessHandler.bind(this, "lower")}>
+              -
+            </PrimaryButton>
+          </View>
+
+          <View style={styles.singleButtonStyle}>
+            <PrimaryButton onPressProp={nextGuessHandler.bind(this, "greater")}>
+              +
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
+      </Card>
 
       <View>{/* guessed history / log */}</View>
     </View>
   );
 }
 
-export default GameScreen;
-
 const styles = StyleSheet.create({
   gameScreenContainer: {
     flex: 1,
-    margin: 8,
+    marginTop: 120,
     padding: 8,
   },
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  singleButtonStyle: {
+    flex: 1,
+  },
 });
+
+export default GameScreen;
