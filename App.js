@@ -1,6 +1,7 @@
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import { useFonts } from "expo-font";
 
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
@@ -9,6 +10,15 @@ import GameOverScreen from "./screens/GameOverScreen";
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameOver, setGameOver] = useState(true);
+
+  useFonts({
+    "open-sans-regular": require("./assets/fonts/OpenSans-Regular.ttf"),
+    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+    "anton-regular": require("./assets/fonts/Anton-Regular.ttf"),
+    "harland-roselyn": require("./assets/fonts/Harland-Roselyn.ttf"),
+    "road-rage": require("./assets/fonts/Road-Rage.otf"),
+    "coffee-extra": require("./assets/fonts/Coffee-Extra.otf"),
+  });
 
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
@@ -40,10 +50,7 @@ export default function App() {
         style={styles.rootScreen}
         imageStyle={styles.backgroundImageStyle}
       >
-        <SafeAreaView style={styles.rootScreen}>
-          {screen}
-          {/* <GameScreen /> */}
-        </SafeAreaView>
+        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );

@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: Colors.primary800,
     borderRadius: 25,
-    // justifyContent: "center",
-    // alignItems: "center",
+    alignContent: "center",
   },
 
   numberText: {

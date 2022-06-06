@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: Colors.accent500,
     textAlign: "center",
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "coffee-extra",
   },
 
   pressed: {

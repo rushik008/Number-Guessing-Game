@@ -1,8 +1,8 @@
-import { View, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors.js";
 
 function Card({ children }) {
-  return <View style={styles.card}>{children}</View>;
+  return <SafeAreaView style={styles.card}>{children}</SafeAreaView>;
 }
 
 const styles = StyleSheet.create({

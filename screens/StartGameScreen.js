@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, TextInput, StyleSheet, Alert } from "react-native";
+import { View, SafeAreaView, TextInput, StyleSheet, Alert } from "react-native";
 
 import PrimaryButton from "../components/ui/PrimaryButton.js";
 import Title from "../components/ui/Title.js";
@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     borderBottomColor: Colors.primary800,
     borderBottomWidth: 2,
-    // text color
     color: Colors.primary800,
     fontSize: 25,
     fontWeight: "bold",

@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
   title: {
     padding: 8,
     margin: 8,
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 32,
+    fontFamily: "coffee-extra",
     color: Colors.primary800,
     textAlign: "center",
     borderWidth: 3,
